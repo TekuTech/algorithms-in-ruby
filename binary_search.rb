@@ -1,10 +1,12 @@
+require 'benchmark'
+
 class BinarySearch
   attr_accessor :nums
   attr_reader :target_num
 
   def initialize
-    @nums = (1..100).to_a
-    @target_num = rand(100)
+    @nums = (1..300).to_a
+    @target_num = rand(300)
   end
 
   def start
@@ -18,7 +20,7 @@ class BinarySearch
       puts
     end
 
-    puts '正解しました。'
+    puts "答えは#{middle_number}ですね！"
   end
 
   private
@@ -42,10 +44,10 @@ class BinarySearch
   def narrow_down
     @nums =
       if too_high?
-        puts '中央値より大きいようです。'
+        puts "中央値(#{middle_number})より大きいようです。"
         nums.select { |n| n > middle_number }
       else
-        puts '中央値より小さいようです。'
+        puts "中央値(#{middle_number})より小さいようです。"
         nums.select { |n| n < middle_number }
       end
   end
